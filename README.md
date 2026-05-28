@@ -25,8 +25,12 @@ realizzata con Laravel.
 ![Detail](screenshots/details.png)
 
 - Register
-- 
+
   ![Register](screenshots/register.png)
+  
+- Create
+
+  ![Create](screenshots/create.png)
 
 ##  Tech Stack
 
