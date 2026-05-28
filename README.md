@@ -11,6 +11,23 @@ realizzata con Laravel.
 - Sistema di categorie
 - Interfaccia responsive con Bootstrap
 
+## Immagini
+- Homepage
+  
+![Home](screenshots/home.png)
+
+- Posts
+
+![Posts](screenshots/post.png)
+
+- Details
+  
+![Detail](screenshots/details.png)
+
+- Register
+- 
+  ![Register](screenshots/register.png)
+
 ##  Tech Stack
 
 - **Backend:** PHP 8 · Laravel
