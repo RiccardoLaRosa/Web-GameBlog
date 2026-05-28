@@ -41,6 +41,7 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         // auth()->user()->posts()->associate($post);
         $post->user_id = Auth::user()->id;
+        dd($request->tag);
         if($request->tag) {
             $post->tags()->attach($request->tag);
         }

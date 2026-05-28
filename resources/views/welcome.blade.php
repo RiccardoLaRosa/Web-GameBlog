@@ -12,7 +12,7 @@
             </div>
             
             {{-- Galleria Immagini --}}
-            <div class="gallery m-5">
+            <div class="gallery m-5 mam">
 
                 <!-- gallery-item -->
                 <figure class="gallery__item gallery__item--1 m-0">

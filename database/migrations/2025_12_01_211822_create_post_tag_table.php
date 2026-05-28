@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('post_tag', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('post_id')->nullable()->constrained()->onDelete('set null');
-            $table->foreignId('tag_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('post_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('tag_id')->nullable()->constrained()->cascadeOnDelete();
         });
     }
 

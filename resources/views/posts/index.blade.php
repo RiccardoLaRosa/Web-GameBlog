@@ -38,7 +38,7 @@
 
                                     @endforeach
 
-                                    {{-- Badge Cat6egoria --}}
+                                    {{-- Badge Categoria --}}
                                     <span class="badge bg-secondary me-2 fs-6">{{$post->category->name}}</span>
 
                                 </div>
