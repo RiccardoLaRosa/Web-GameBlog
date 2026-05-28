@@ -47,7 +47,7 @@
                             </div>
 
                             <!-- Pulsante -->
-                            <a href="#" class="btn btn-primary btn-sm pe-4 ps-4 py-2 fs-5 fw-semibold">Leggi</a>
+                            <a href="{{route('posts.show', $post)}}" class="btn btn-primary btn-sm pe-4 ps-4 py-2 fs-5 fw-semibold">Leggi</a>
                         </div>
                     @endforeach
                     <div class="d-flex justify-content-center mt-4">
