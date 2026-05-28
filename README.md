@@ -1,55 +1,48 @@
-# Web-GameBlog
+# 🎮 Web-GameBlog
 
-Piattaforma web per la scoperta e catalogazione di videogiochi,
-realizzata con Laravel.
+Piattaforma web per la scoperta e catalogazione di videogiochi realizzata con Laravel.
 
-##  Funzionalità
+---
 
-- Registrazione e login utenti
-- Lista completa dei giochi
-- Dettaglio singolo gioco
-- Sistema di categorie
-- Interfaccia responsive con Bootstrap
+## - Preview Homepage
 
-## Immagini
-- Homepage
-  
-![Home](screenshots/home.png)
+<p align="center">
+  <img src="screenshots/home.png" width="800">
+</p>
 
-- Posts
+---
 
-![Posts](screenshots/post.png)
+## - Funzionalità
 
-- Details
-  
-![Detail](screenshots/details.png)
+-  Login e registrazione utenti
+-  Lista giochi
+-  Dettaglio gioco
+-  Categorie
+-  Tags
+-  Responsive UI
 
-- Register
-
-  ![Register](screenshots/register.png)
-  
-- Create
-
-  ![Create](screenshots/create.png)
+---
 
 ##  Tech Stack
 
-- **Backend:** PHP 8 · Laravel
-- **Frontend:** Blade · Bootstrap 5 · JavaScript
-- **Database:** MySQL
+- Laravel
+- PHP 8
+- MySQL
+- Bootstrap 5
 
-##  Installazione
+---
 
-```bash
-git clone https://github.com/RiccardoLaRosa/Web-GameBlog.git
-cd Web-GameBlog
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed
-php artisan serve
-```
+## Screens
 
-##  Note
+<p align="center">
+  <img src="screenshots/post.png" width="400" height="283">
+  <img src="screenshots/details.png" width="400">
+  <img src="screenshots/register.png" width="400">
+  <img src="screenshots/create.png" width="400">
+</p>
 
-Le credenziali del database vanno configurate nel file `.env`.
+---
+
+## 🔗 Link
+
+- GitHub Repo: https://github.com/RiccardoLaRosa/Web-GameBlog
