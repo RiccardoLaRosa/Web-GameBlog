@@ -23,9 +23,28 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'required',
-            'image' => 'nullable',
-            'tag' => 'array',
+            'description' => 'required|string',
+            'image' => 'nullable|image|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'tag' => 'nullable|array',
+            'tag.*' => 'exists:tags,id',
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Inserisci il titolo.',
+            'title.max' => 'Il titolo è troppo lungo.',
+            'description.required' => 'Inserisci la descrizione.',
+            'image.image' => "Il file deve essere un'immagine.",
+            'image.max' => "L'immagine non può superare i 2 MB.",
+            'category_id.required' => 'Seleziona una categoria.',
+            'category_id.exists' => 'La categoria selezionata non esiste.',
+            'tag.*.exists' => 'Uno dei tag selezionati non esiste.',
         ];
     }
 }

@@ -45,6 +45,13 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
+        // Applicato a tutte le rotte Fortify (config/fortify.php), ma conta solo l'invio del form di registrazione
+        RateLimiter::for('register', function (Request $request) {
+            return $request->isMethod('post') && $request->is('register')
+                ? Limit::perMinute(5)->by($request->ip())
+                : Limit::none();
+        });
+
         Fortify::loginView(function() {
             return view('auth.login');
         });

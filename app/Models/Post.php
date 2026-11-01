@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\PostSubscriber;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -18,6 +19,9 @@ class Post extends Model
     }
     public function tags() {
         return $this->belongsToMany(Tag::class);
+    }
+    public function subscribers() {
+        return $this->hasMany(PostSubscriber::class);
     }
 
 }

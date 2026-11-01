@@ -18,10 +18,9 @@
                 <div class="p-3 bg-secondary bg-opacity-10 rounded-3 h-100">
                     <h5 class="fw-bold mb-3">Link Utili</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none d-block py-1 fw-semibold">Home</a></li>
-                        <li><a href="#" class="text-white text-decoration-none d-block py-1 fw-semibold">Posts</a></li>
-                        <li><a href="#" class="text-white text-decoration-none d-block py-1 fw-semibold">Categorie</a></li>
-                        <li><a href="#" class="text-white text-decoration-none d-block py-1 fw-semibold">Contatti</a></li>
+                        <li><a href="{{ url('/') }}" class="text-white text-decoration-none d-block py-1 fw-semibold">Home</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="text-white text-decoration-none d-block py-1 fw-semibold">Posts</a></li>
+                        <li><a href="{{ route('privacy') }}" class="text-white text-decoration-none d-block py-1 fw-semibold">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>

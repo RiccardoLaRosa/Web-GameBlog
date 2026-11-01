@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Recensione Nier Automata</h5>
                             <p class="card-text">Scopri tutti i segreti del nuovo titolo FromSoftware e come affrontare i boss più duri.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Leggi di più</a>
+                            <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-sm">Leggi di più</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Expediction 33</h5>
                             <p class="card-text ">Tutti i consigli per completare ogni livello e trovare tutte le lune nascoste.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Leggi di più</a>
+                            <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-sm">Leggi di più</a>
                         </div>
                     </div>
                 </div>
@@ -72,25 +72,12 @@
                         <div class="card-body">
                             <h5 class="card-title">Top 10 giochi del 2025</h5>
                             <p class="card-text">I giochi più attesi e quelli che hanno fatto più parlare quest'anno.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Leggi di più</a>
+                            <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-sm">Leggi di più</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Sezione Newsletter --}}
-        <div class=" mx-auto mt-3 line_animation2 mb-5 p-3 rounded-4 text-center shadow">
-            <h2 class="fw-bold">Non perdere le novità!</h2>
-            <p>Iscriviti alla nostra newsletter e resta aggiornato su recensioni, guide e news sui tuoi giochi preferiti.</p>
-            <form class="row justify-content-center g-2">
-                <div class="col-auto">
-                    <input type="email" class="form-control" placeholder="Inserisci la tua email">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Iscriviti</button>
-                </div>
-            </form>
-        </div>
 
 </x-layout>

@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+
+class PostSubscriber extends Model
+{
+    protected $fillable = ['post_id','user_id','consent_at'];
+
+    protected $casts = ['consent_at' => 'datetime'];
+
+    public function post() {
+        return $this->belongsTo(Post::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+}

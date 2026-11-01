@@ -1,7 +1,7 @@
 <x-layout>
       <!-- Form -->
       <div class="d-flex justify-content-center align-items-center mb-5 mt-5">
-          <div class="col-8">
+          <div class="col-11 col-lg-8">
             <h2>Pagina di Registrazione</h2>
             <p class="mb-4 ">Inserisci i tuoi dati Personali</p>
             <form class="row" action="{{ route('register.store') }}" method="POST">
