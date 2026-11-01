@@ -7,7 +7,7 @@
             @csrf
                 <div class="mb-3 col-12 col-md-7">
                     <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{ old('email') }}">
                     @error('email')
                         <div class="alert alert-danger">{{$message}}</div>
                     @enderror
@@ -22,6 +22,12 @@
                 <div class="col-12 col-md-7">
                     <button class="btn btn-primary" type="submit">Accedi</button>
                 </div>
+                @if (config('app.privacy_owner_email'))
+                    <div class="col-12 col-md-7 mt-3 small text-black-50">
+                        Password dimenticata? Scrivi a
+                        <a href="mailto:{{ config('app.privacy_owner_email') }}">{{ config('app.privacy_owner_email') }}</a>
+                    </div>
+                @endif
             </form>
 
         </div>

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void {
-        Tag::create(['message'=>'New Relase']);
+        Tag::create(['message'=>'New Release']);
         Tag::create(['message'=>'DLC']);
         Tag::create(['message'=>'Most Viewed']);
     }

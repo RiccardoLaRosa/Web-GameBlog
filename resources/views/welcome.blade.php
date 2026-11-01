@@ -51,7 +51,7 @@
                         <img src="{{ asset('image/nier.jpg') }}" class="card-img-top" alt="News 1">
                         <div class="card-body">
                             <h5 class="card-title">Recensione Nier Automata</h5>
-                            <p class="card-text">Scopri tutti i segreti del nuovo titolo FromSoftware e come affrontare i boss più duri.</p>
+                            <p class="card-text">Scopri il mondo di NieR: Automata e come affrontare i suoi boss più duri.</p>
                             <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-sm">Leggi di più</a>
                         </div>
                     </div>
@@ -60,8 +60,8 @@
                     <div class="card h-100 shadow-sm rounded-4 overflow-hidden">
                         <img src="{{ asset('image/exp.png') }}" class="card-img-top" alt="News 2">
                         <div class="card-body">
-                            <h5 class="card-title">Expediction 33</h5>
-                            <p class="card-text ">Tutti i consigli per completare ogni livello e trovare tutte le lune nascoste.</p>
+                            <h5 class="card-title">Expedition 33</h5>
+                            <p class="card-text ">Tutti i consigli per padroneggiare il combattimento a turni e completare l'avventura.</p>
                             <a href="{{ route('posts.index') }}" class="btn btn-outline-primary btn-sm">Leggi di più</a>
                         </div>
                     </div>
