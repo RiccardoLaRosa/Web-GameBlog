@@ -77,6 +77,7 @@
 }
 .line_animation {
     width:1000px;
+    max-width:100%;
     height:5px; 
     background: linear-gradient(90deg, #6f42c1, #0d6efd); 
     border-radius:2px;
@@ -156,4 +157,76 @@
 .mam {
     margin-left: 200px !important; 
     margin-right: 200px !important; 
+}
+
+/* Immagine in evidenza della pagina articolo */
+.hero-media {
+    height: 420px;
+}
+
+.pagination {
+    flex-wrap: wrap;
+}
+
+/* Tablet e schermi sotto i 1200px: i margini fissi del desktop non ci stanno */
+@media (max-width: 1199.98px) {
+    .ps-6 {
+        padding-left: 1.5rem;
+    }
+    .pe-6 {
+        padding-right: 1.5rem;
+    }
+    .ms-6 {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+    .mam {
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+    }
+}
+
+/* Menu compresso: un nome utente lungo deve andare a capo, non spostare le altre voci */
+@media (max-width: 991.98px) {
+    .navbar .dropdown-toggle {
+        white-space: normal;
+    }
+}
+
+/* Cellulare */
+@media (max-width: 767.98px) {
+    .ps-6 {
+        padding-left: .75rem;
+    }
+    .pe-6 {
+        padding-right: .75rem;
+    }
+    .ms-6 {
+        margin-left: .75rem;
+        margin-right: .75rem;
+    }
+    .mam {
+        margin-left: .75rem !important;
+        margin-right: .75rem !important;
+    }
+    .m-6 {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    .hero-media {
+        height: 240px;
+    }
+    .img-index {
+        width: 100%;
+        height: 180px;
+    }
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: 40vw;
+    }
+    .gallery .gallery__item {
+        grid-column: auto;
+        grid-row: auto;
+    }
 }

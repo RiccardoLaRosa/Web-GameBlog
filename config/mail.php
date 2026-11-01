@@ -115,4 +115,16 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Notification Address
+    |--------------------------------------------------------------------------
+    |
+    | The address that receives a notification for every new subscription
+    | to a game.
+    |
+    */
+
+    'notification_address' => env('MAIL_NOTIFICATION_ADDRESS'),
+
 ];

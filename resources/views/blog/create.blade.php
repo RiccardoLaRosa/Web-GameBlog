@@ -53,14 +53,20 @@
                             {{-- CATEGORIA --}}
                             <div class="mb-3">
                                 <label class="form-label">Categoria</label>
-                                <select name="category_id" class="form-select">
+                                <select name="category_id" class="form-select @error('category_id') is-invalid @enderror">
                                     <option value="">-- Seleziona categoria --</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">
+                                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
                                 </select>
+
+                                @error('category_id')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             {{-- TAGS --}}
@@ -71,7 +77,8 @@
                                     @foreach ($tags as $tag)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="tag[]"
-                                                value="{{ $tag->id }}" id="tag{{ $tag->id }}">
+                                                value="{{ $tag->id }}" id="tag{{ $tag->id }}"
+                                                @checked(in_array($tag->id, old('tag', [])))>
 
                                             <label class="form-check-label" for="tag{{ $tag->id }}">
                                                 {{ $tag->message }}
@@ -84,7 +91,13 @@
                             {{-- IMMAGINE --}}
                             <div class="mb-3">
                                 <label class="form-label">Immagine</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+
+                                @error('image')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             {{-- BUTTON --}}

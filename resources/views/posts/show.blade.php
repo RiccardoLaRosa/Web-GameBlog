@@ -6,17 +6,22 @@
 
         <div class="col-12 col-xl-10">
 
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             {{-- HERO --}}
             <div class="position-relative mb-4 rounded-4 overflow-hidden shadow">
 
                 @if($post->image)
                     <img src="{{ asset('storage/' . $post->image) }}"
-                         class="w-100"
-                         style="height: 420px; object-fit: cover;"
+                         class="w-100 hero-media"
+                         style="object-fit: cover;"
                          alt="{{ $post->title }}">
                 @else
-                    <div class="bg-dark text-white d-flex align-items-center justify-content-center"
-                         style="height: 420px;">
+                    <div class="bg-dark text-white d-flex align-items-center justify-content-center hero-media">
                         <h3>No Image Available</h3>
                     </div>
                 @endif
@@ -29,7 +34,7 @@
                         {{ $post->category?->name ?? 'Uncategorized' }}
                     </span>
 
-                    <h1 class="text-white fw-bold m-0">
+                    <h1 class="text-white fw-bold m-0 text-break">
                         {{ $post->title }}
                     </h1>
 
@@ -46,7 +51,7 @@
 
                         <h5 class="fw-bold mb-3">Descrizione</h5>
 
-                        <p class="fs-5 lh-lg">
+                        <p class="fs-5 lh-lg text-break">
                             {{ $post->description }}
                         </p>
 
@@ -79,7 +84,7 @@
 
                         <p class="mb-2">
                             📅 Creato il:
-                            <strong>{{ $post->created_at->format('d M Y') }}</strong>
+                            <strong>{{ $post->created_at->translatedFormat('d M Y') }}</strong>
                         </p>
 
                         <p class="mb-0">
@@ -89,6 +94,52 @@
 
                     </div>
 
+                    {{-- ISCRIZIONE AL GIOCO --}}
+                    <div id="iscrizione" class="bg-white rounded-4 shadow-sm p-4 mb-3">
+
+                        <h6 class="fw-bold">Iscrizione al gioco</h6>
+
+                        <hr>
+
+                        @auth
+                            @if ($isSubscribed)
+                                <p>Sei iscritto a questo gioco.</p>
+
+                                <form action="{{ route('posts.unsubscribe', $post) }}" method="POST" class="d-grid">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger rounded-3">Annulla iscrizione</button>
+                                </form>
+                            @else
+                                <form action="{{ route('posts.subscribe', $post) }}" method="POST" class="d-grid">
+                                    @csrf
+
+                                    <div class="form-check mb-3">
+                                        <input type="checkbox" name="consent" value="1" id="consent" required
+                                            class="form-check-input @error('consent') is-invalid @enderror">
+                                        <label class="form-check-label small" for="consent">
+                                            Acconsento al trattamento del mio nome e della mia email per registrare l'iscrizione a questo articolo.
+                                            <a href="{{ route('privacy') }}">Privacy Policy</a>
+                                        </label>
+                                        @error('consent')
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary rounded-3">Iscriviti</button>
+                                </form>
+                            @endif
+                        @else
+                            <p>Accedi per iscriverti a questo gioco.</p>
+
+                            <div class="d-grid">
+                                <a href="{{ route('login') }}" class="btn btn-primary rounded-3">Accedi</a>
+                            </div>
+                        @endauth
+
+                    </div>
                     <div class="d-grid gap-2">
 
                         <a href="{{ route('posts.index') }}"
@@ -96,10 +147,19 @@
                             Torna indietro
                         </a>
 
-                        <a href="{{ route('posts.edit', $post->id) }}"
-                           class="btn btn-warning rounded-3">
-                            ✏️ Modifica
-                        </a>
+                        @can('admin')
+                            <a href="{{ route('posts.edit', $post->id) }}"
+                               class="btn btn-warning rounded-3">
+                                ✏️ Modifica
+                            </a>
+
+                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-grid"
+                                onsubmit="return confirm('Eliminare questo post?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger rounded-3">🗑️ Elimina</button>
+                            </form>
+                        @endcan
 
                     </div>
 

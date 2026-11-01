@@ -1,6 +1,6 @@
 <x-layout>
       <div class="d-flex justify-content-center align-items-center m-6">
-          <div class="col-6">
+          <div class="col-11 col-md-8 col-lg-6">
             <h1 class="mb-3 text-center">Benvenuto</h1>
             <h6 class="mb-4 text-center mt-1 text-black-50">Non hai ancora un account? <a href="{{route('register')}}">Crea un account</a></h6>
             <form class="row justify-content-center" action="{{ route('login.store') }}" method="POST">
@@ -19,7 +19,7 @@
                         <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <button class="btn btn-primary" type="submit">Accedi</button>
                 </div>
             </form>

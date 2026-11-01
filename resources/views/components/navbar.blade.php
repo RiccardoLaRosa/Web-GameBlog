@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-    <div class="container-fluid justify-content-center ps-6 pe-6">
+    <div class="container-fluid justify-content-between justify-content-lg-center ps-6 pe-6">
         <!-- Brand -->
         <a class="navbar-brand fw-bold fs-2 text-gradient me-4" href="/">GameBlog</a>
 
@@ -50,9 +50,13 @@
                             Bentornato, {{auth()->user()->name}}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-1 px-2 text-center">
-                            <li><a class="dropdown-item fs-6" href="{{route('posts.create')}}">Nuovo Post</a></li>
-                            <li><a class="dropdown-item fs-6" href="#">Gestisci Categorie</a></li>
+                            <li><a class="dropdown-item fs-6" href="{{route('subscriptions.index')}}">Le mie iscrizioni</a></li>
                             <li><hr class="dropdown-divider"></li>
+                            @can('admin')
+                                <li><a class="dropdown-item fs-6" href="{{route('posts.create')}}">Nuovo Post</a></li>
+                                <li><a class="dropdown-item fs-6" href="{{route('admin.subscribers')}}">Iscritti</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endcan
                             <form action="{{route('logout')}}" method="POST" class="px-3 py-2">
                                 @csrf
                                 <button type="submit" class="btn btn-danger w-100 fs-6">Logout</button>
