@@ -58,5 +58,9 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function() {
             return view('auth.register');
         });
+        // Fortify registra sempre questa rotta: senza una pagina darebbe errore 500
+        Fortify::confirmPasswordView(function() {
+            abort(404);
+        });
     }
 }

@@ -149,6 +149,55 @@ class AdminAccessTest extends TestCase
             ->assertSee('Leggi di più');
     }
 
+    public function test_pages_without_a_view_do_not_give_500(): void
+    {
+        $this->actingAs(User::factory()->create())->get('/user/confirm-password')->assertNotFound();
+        $this->get('/two-factor-challenge')->assertNotFound();
+        $this->put('/user/profile-information', ['name' => 'x', 'email' => 'x@example.com'])->assertNotFound();
+        $this->put('/user/password', [])->assertNotFound();
+    }
+
+    public function test_register_only_asks_for_the_data_it_saves(): void
+    {
+        $this->get('/register')
+            ->assertOk()
+            ->assertSee('name="name"', false)
+            ->assertSee('name="email"', false)
+            ->assertDontSee('Cognome')
+            ->assertDontSee('Telefono')
+            ->assertDontSee('Data di nascita')
+            ->assertDontSee('Paese')
+            ->assertDontSee('Città');
+    }
+
+    public function test_login_explains_how_to_recover_the_password(): void
+    {
+        config(['app.privacy_owner_email' => 'titolare@example.com']);
+
+        $this->get('/login')->assertOk()->assertSee('Password dimenticata?')->assertSee('titolare@example.com');
+    }
+
+    public function test_no_dead_social_links_and_security_headers_are_sent(): void
+    {
+        $this->get('/')
+            ->assertOk()
+            ->assertDontSee('Facebook')
+            ->assertDontSee('Instagram')
+            ->assertHeader('X-Frame-Options', 'SAMEORIGIN')
+            ->assertHeader('X-Content-Type-Options', 'nosniff')
+            ->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    }
+
+    public function test_pagination_is_in_italian(): void
+    {
+        app()->setLocale('it');
+        foreach (range(1, 11) as $i) {
+            $this->makePost();
+        }
+
+        $this->get(route('posts.index'))->assertOk()->assertSee('risultati')->assertDontSee('Showing');
+    }
+
     public function test_forgot_password_is_disabled(): void
     {
         $this->get('/forgot-password')->assertNotFound();
