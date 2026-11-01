@@ -174,7 +174,11 @@ class AdminAccessTest extends TestCase
     {
         config(['app.privacy_owner_email' => 'titolare@example.com']);
 
-        $this->get('/login')->assertOk()->assertSee('Password dimenticata?')->assertSee('titolare@example.com');
+        $this->get('/login')
+            ->assertOk()
+            ->assertSee('Password dimenticata?')
+            ->assertSee(route('privacy'))
+            ->assertDontSee('titolare@example.com');
     }
 
     public function test_no_dead_social_links_and_security_headers_are_sent(): void

@@ -22,12 +22,9 @@
                 <div class="col-12 col-md-7">
                     <button class="btn btn-primary" type="submit">Accedi</button>
                 </div>
-                @if (config('app.privacy_owner_email'))
-                    <div class="col-12 col-md-7 mt-3 small text-black-50">
-                        Password dimenticata? Scrivi a
-                        <a href="mailto:{{ config('app.privacy_owner_email') }}">{{ config('app.privacy_owner_email') }}</a>
-                    </div>
-                @endif
+                <div class="col-12 col-md-7 mt-3 small text-black-50">
+                    Password dimenticata? Trovi il contatto nella <a href="{{ route('privacy') }}">Privacy Policy</a>.
+                </div>
             </form>
 
         </div>
